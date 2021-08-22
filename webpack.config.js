@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const config = {
   entry: './src/index.js',
@@ -50,6 +52,15 @@ module.exports = (env, argv) => {
   if (argv.mode === 'production') {
     config.mode = 'production';
     config.module.rules.push();
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [
+          { from: 'public', to: path.join(__dirname, 'server/public') },
+        ],
+      })
+    );
+
+    //ToDo: enable JS CSS minification, post-css, uglifying
 
     return config;
   }

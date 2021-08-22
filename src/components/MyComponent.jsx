@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './MyComponent.scss';
 
 const MyComponent = () => {
   const [text, setText] = useState();

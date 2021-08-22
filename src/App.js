@@ -1,7 +1,6 @@
 // import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
 import MyComponent from './components/MyComponent';
-// import './App.css';
 
 class App extends Component {
   render() {

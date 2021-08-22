@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
+const config = {
   entry: './src/index.js',
-  mode: 'development',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'public'),
@@ -16,26 +16,41 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
-          // Translates CSS into CommonJS
-          'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
-        ],
+        test: /\.(sa|sc|c)ss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'main.css',
+    }),
+    new webpack.SourceMapDevToolPlugin({}),
+  ],
   resolve: { extensions: ['*', '.js', '.jsx'] },
-  devServer: {
-    static: path.join(__dirname, 'public'),
-    port: 3000,
-    proxy: {
-      '/api': 'http://localhost:4000',
-    },
-  },
-  devtool: false,
-  plugins: [new webpack.SourceMapDevToolPlugin({})],
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.mode = 'development';
+    config.devServer = {
+      static: path.join(__dirname, 'public'),
+      port: 3000,
+      proxy: {
+        '/api': 'http://localhost:4000',
+      },
+    };
+    config.module.rules.push();
+    config.devtool = false;
+    config.plugins.push(new webpack.SourceMapDevToolPlugin({}));
+
+    return config;
+  }
+
+  if (argv.mode === 'production') {
+    config.mode = 'production';
+    config.module.rules.push();
+
+    return config;
+  }
 };

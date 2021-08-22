@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { fetchJustEatByPostCode } from '../common/apiUtils';
+
 import './MyComponent.scss';
 
 const MyComponent = () => {
@@ -6,14 +8,12 @@ const MyComponent = () => {
   const a = { a: 1 };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch('/api/justeat/postcode?q=tw92jx', () => {
-        return res;
-      });
-      const resContent = await res.json();
-      setText(JSON.stringify(resContent));
-    };
-    fetchData();
+    (async function fetchData() {
+      const data = await fetchJustEatByPostCode();
+      setText(JSON.stringify(data));
+    })();
+
+
   }, []);
 
   return (

@@ -12,14 +12,11 @@ const MyComponent = () => {
       const data = await fetchJustEatByPostCode();
       setText(JSON.stringify(data));
     })();
-
-
   }, []);
 
   return (
     <div className="my-component">
-      <h2>{null ?? 'a'}</h2>
-      <h2>{a?.a ?? 'A'}</h2>
+      <h1>hello</h1>
       <code>{text}</code>
     </div>
   );

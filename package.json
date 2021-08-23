@@ -7,7 +7,8 @@
     "build": "webpack --mode=production",
     "start": "webpack serve --mode=development",
     "watch": "webpack --watch",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
@@ -23,8 +24,15 @@
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": "^7.0.1",
     "jest": "^27.0.6",
+    "lint-staged": "^11.1.2",
     "mini-css-extract-plugin": "^2.2.0",
+    "prettier": "2.3.2",
     "sass": "^1.38.0",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
@@ -46,5 +54,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }

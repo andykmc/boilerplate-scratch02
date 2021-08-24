@@ -9,6 +9,7 @@ const config = {
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'public'),
+        assetModuleFilename: '[name][ext][query]',
     },
     module: {
         rules: [
@@ -25,6 +26,10 @@ const config = {
                     'postcss-loader',
                     'sass-loader',
                 ],
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
             },
         ],
     },

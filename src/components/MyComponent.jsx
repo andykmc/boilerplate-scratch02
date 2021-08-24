@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchJustEatByPostCode } from '../common/apiUtils';
 
+import reactIcon from '../assets/images/react-icon.png';
 import './MyComponent.scss';
 
 const MyComponent = () => {
@@ -17,6 +18,7 @@ const MyComponent = () => {
     return (
         <div className="my-component">
             <h1 className="title">hello</h1>
+            <img src={reactIcon}></img>
             <h3>{text}</h3>
         </div>
     );

@@ -22,8 +22,6 @@ describe('test', () => {
         expect(global.fetch).toHaveBeenCalledTimes(0);
         await act(async () => render(<MyComponent />));
 
-        screen.debug();
-
         expect(screen.getAllByText('hello')).toHaveLength(1);
         expect(screen.getAllByText('"hihi"')).toHaveLength(1);
         expect(global.fetch).toHaveBeenCalledTimes(1);

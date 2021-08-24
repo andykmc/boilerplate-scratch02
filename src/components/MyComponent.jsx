@@ -17,7 +17,7 @@ const MyComponent = () => {
     return (
         <div className="my-component">
             <h1>hello</h1>
-            <h2>{text}</h2>
+            <h3>{text}</h3>
         </div>
     );
 };

@@ -2,43 +2,30 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import {
     render,
-    fireEvent,
-    waitFor,
+    // fireEvent,
+    // waitFor,
     screen,
     act,
 } from '@testing-library/react';
 
 import MyComponent from './MyComponent';
-// import { fetchJustEatByPostCode } from '../common/apiUtils';
-
-// jest.mock('../common/apiUtils', () => ({
-//   fetchJustEatByPostCode: () => Promise.resolve('hihi'),
-// }));
-
-function setupFetchStub(data) {
-    return function fetchStub(_url) {
-        return new Promise((resolve) => {
-            resolve({
-                json: () => Promise.resolve(data),
-            });
-        });
-    };
-}
+import { clearFetchMock, initFetchMocks } from '../common/testUtils';
 
 describe('test', () => {
     afterEach(() => {
-        global.fetch.mockClear();
-        delete global.fetch;
+        clearFetchMock();
     });
 
     it('testing', async () => {
-        global.fetch = jest.fn().mockImplementation(setupFetchStub('hihi'));
+        initFetchMocks(['hihi', 'byebye']);
 
+        expect(global.fetch).toHaveBeenCalledTimes(0);
         await act(async () => render(<MyComponent />));
+
+        screen.debug();
 
         expect(screen.getAllByText('hello')).toHaveLength(1);
         expect(screen.getAllByText('"hihi"')).toHaveLength(1);
-
-        // global.fetch.mockRestore();
+        expect(global.fetch).toHaveBeenCalledTimes(1);
     });
 });

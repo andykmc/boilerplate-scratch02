@@ -16,7 +16,7 @@ const MyComponent = () => {
 
     return (
         <div className="my-component">
-            <h1>hello</h1>
+            <h1 className="title">hello</h1>
             <h3>{text}</h3>
         </div>
     );

@@ -9,7 +9,7 @@ const config = {
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'public'),
-        assetModuleFilename: '[name][ext][query]',
+        assetModuleFilename: 'images/[name][ext][query]',
     },
     module: {
         rules: [

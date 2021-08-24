@@ -10084,7 +10084,7 @@
             },
             806: function (e, t, n) {
                 'use strict';
-                e.exports = n.p + 'react-icon.png';
+                e.exports = n.p + 'images/react-icon.png';
             },
         },
         t = {};

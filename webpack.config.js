@@ -68,8 +68,6 @@ module.exports = (env, argv) => {
             })
         );
 
-        //ToDo: enable JS CSS minification, post-css, uglifying
-
         return config;
     }
 };

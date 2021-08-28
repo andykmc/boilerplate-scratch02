@@ -51,6 +51,7 @@ module.exports = (env, argv) => {
             proxy: {
                 '/api': 'http://localhost:4000',
             },
+            historyApiFallback: true,
         };
         config.module.rules.push();
         config.devtool = false;

@@ -56,7 +56,8 @@
     "dependencies": {
         "include-media": "^1.4.10",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react-dom": "^17.0.2",
+        "react-router-dom": "^5.2.1"
     },
     "browserslist": {
         "production": [

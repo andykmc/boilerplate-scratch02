@@ -20,6 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/compare', express.static(path.join(__dirname, 'public')));
 app.use('/health', healthRouter);
 app.use('/api', apiRouter);
 
